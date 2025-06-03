@@ -1,0 +1,38 @@
+<div style="display: flex; justify-content: center; padding: 20px; background-color: #f4f4f4; min-height: 100vh;">
+    <div style="max-width: 800px; width: 100%; display: flex; flex-direction: column; align-items: center; padding-top: 50px;">
+        <div *ngFor="let orderBookKey of orderBooks | keyvalue" style="text-align: center; margin-bottom: 20px;">
+            <h3 style="font-family: Arial, sans-serif; color: #333;">{{ orderBookKey.key }}</h3>
+            <table style="margin: 0 auto; border-collapse: collapse; width: 60%; table-layout: fixed; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; overflow: hidden;">
+                <thead>
+                    <tr style="background-color: #4CAF50; color: white;">
+                        <th style="padding: 12px; text-align: center; font-family: Arial, sans-serif; font-size: 14px;">Price</th>
+                        <th style="padding: 12px; text-align: center; font-family: Arial, sans-serif; font-size: 14px;">Volume</th>
+                        <th style="padding: 12px; text-align: center; font-family: Arial, sans-serif; font-size: 14px;">Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let sideKey of orderBookKey.value | keyvalue">
+                        <ng-container *ngIf="sideKey.key === 'Sell'">
+                            <ng-container *ngFor="let priceVolume of sideKey.value | keyvalue">
+                                <tr style="background-color: #f9f9f9; color: green; transition: background-color 0.3s;">
+                                    <td style="padding: 12px; text-align: center; font-family: Arial, sans-serif; border-bottom: 1px solid #ddd;">{{ priceVolume.key }}</td>
+                                    <td style="padding: 12px; text-align: center; font-family: Arial, sans-serif; border-bottom: 1px solid #ddd;">{{ priceVolume.value }}</td>
+                                    <td style="padding: 12px; text-align: center; font-family: Arial, sans-serif; border-bottom: 1px solid #ddd;">{{ sideKey.key }}</td>
+                                </tr>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container *ngIf="sideKey.key === 'Buy'">
+                            <ng-container *ngFor="let priceVolume of sideKey.value | keyvalue">
+                                <tr style="background-color: #f9f9f9; color: red; transition: background-color 0.3s;">
+                                    <td style="padding: 12px; text-align: center; font-family: Arial, sans-serif; border-bottom: 1px solid #ddd;">{{ priceVolume.key }}</td>
+                                    <td style="padding: 12px; text-align: center; font-family: Arial, sans-serif; border-bottom: 1px solid #ddd;">{{ priceVolume.value }}</td>
+                                    <td style="padding: 12px; text-align: center; font-family: Arial, sans-serif; border-bottom: 1px solid #ddd;">{{ sideKey.key }}</td>
+                                </tr>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div style="display: flex; justify-content: center; align-items: center; margin: 20px; padding-top: 50px;">
+    <table style="width: 80%; border-collapse: collapse; text-align: left; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; overflow: hidden; max-width: 800px;">
+        <thead>
+            <tr style="background-color: #4CAF50; color: white;">
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: center;">Tradable City</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: center;">Current Temperature</th>
+                <th style="border: 1px solid #ddd; padding: 12px; text-align: center;">Total Volume in Order Book</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let entry of tradableCities | keyvalue" style="background-color: #f9f9f9;">
+                <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">{{ entry.key }}</td>
+                <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">{{ entry.value }}</td>
+                <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">{{ ordersPerCity.get(entry.key) }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

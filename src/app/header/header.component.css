@@ -1,0 +1,19 @@
+header {
+    background-color: #e3e5e6;
+    padding: 0;
+    border-bottom: #000000 1px solid;
+}
+
+a {
+    color: #0427b1;
+}
+
+a:hover {
+    color: #7b7676;
+}
+
+.container {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-bretween;
+}

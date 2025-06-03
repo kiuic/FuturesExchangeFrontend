@@ -1,0 +1,68 @@
+<div *ngFor="let cityGroup of pnlData | keyvalue">
+    <h3 style="text-align: center; font-size: 1.8em; font-weight: bold; margin-bottom: 25px; color: #000000;">PNL per User: {{ cityGroup.key }}</h3>
+    <table class="modern-table">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Book</th>
+                <th>Total Long Volume</th>
+                <th>Total Short Volume</th>
+                <th>Signed Total Outstanding Volume</th>
+                <th>Total Debit</th>
+                <th>Total Credit</th>
+                <th>Implied PNL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let userEntry of cityGroup.value | keyvalue">
+                <td>{{ userEntry.key }}</td>
+                <td>{{ userEntry.value.book }}</td>
+                <td>{{ userEntry.value.totalLongVolume }}</td>
+                <td>{{ userEntry.value.totalShortVolume }}</td>
+                <td>{{ userEntry.value.signedTotalOutstandingVolume }}</td>
+                <td>{{ userEntry.value.totalDebit }}</td>
+                <td>{{ userEntry.value.totalCredit }}</td>
+                <td>{{ userEntry.value.impliedPnl }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .modern-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        text-align: left;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .modern-table thead tr {
+        background-color: #4CAF50;
+        color: #ffffff;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .modern-table th, .modern-table td {
+        padding: 12px 15px;
+        border: 1px solid #dddddd;
+    }
+
+    .modern-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .modern-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .modern-table tbody tr:last-of-type {
+        border-bottom: 2px solid #4CAF50;
+    }
+
+    .modern-table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>
